@@ -1,0 +1,190 @@
+head	1.1;
+access;
+symbols;
+locks
+	dan:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2001.06.18.01.00.12;	author dan;	state Exp;
+branches;
+next	;
+
+
+desc
+@First working makefile for the programming language independent comment
+header block.
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@###############################################################################
+# GNUMakefile $Revision$: A Makefile to generate comment header blocks
+#
+# by Daniel C. Nygren $Date$
+# E-mail: Dan.Nygren@@west.sun.com
+# Permanent E-mail: Dan.Nygren@@alumni.clemson.edu
+#
+# Copyright 2001 by Daniel C. Nygren
+#
+#	This is the Makefile for use with a programming language independent 
+# comment header block and additional common and custom m4 files. The 
+# Makefile runs the m4 macro processor on the header source file with the m4 
+# macro files and command line arguments providing the information needed for 
+# a particular programming language.
+#	As some programming languages require a certain magic number at the
+# beginning of a file or a certain end of file marker, sed is used to insert
+# these extra lines.
+#  
+# CALLING SEQUENCE	make [options] [target]
+#
+# EXAMPLE		make  		(Makes all targets)      
+#			make all 	(Makes all targets)
+#			make clean	(Deletes header files)
+#			make header.ext (Just process target listed)
+#
+# TARGET SYSTEM		Any
+#
+# DEVELOPMENT SYSTEM	Windows95 & Cygwin, Solaris 7, GNU make v3.78.1, 
+#			GNU sed v3.02, GNU m4 v1.4
+#
+# CALLS			m4, sed
+#
+# CALLED BY		make
+#
+# INPUTS		header.src, common.m4, and custom m4 files 
+#			Optional $COMMON and $CUSTOM environment variables
+#			are used to find common and custom m4 files.
+#
+# OUTPUTS		header.ext, where .ext is the language's extension.
+#
+# RETURNS		GNU sed returns 0 if OK, 1 if error in Script, 
+#			and 2 if error during execution.
+#
+# ERROR HANDLING	make gives up on the current rule if there is an error
+#			in the rule; m4 stops execution if --fatal-warning is set.
+#
+# WARNINGS		1) GNU make, GNU m4, and GNU sed are required to be named
+#			make, m4, and sed respectively, and in your path before
+#			any other identically named executables.
+#			2) After adding new entry rules, add name to "all" 
+#			target list
+#			3) $COMMON defaults to ./common and $CUSTOM defaults
+#			to ./custom if not defined in your environment.
+#
+###############################################################################
+###############################################################################
+#               REVISIONS
+#
+# $Log$
+###############################################################################
+
+# If COMMON has not been defined, set it to the below default
+ifndef COMMON
+COMMON := ./common
+endif
+
+# If CUSTOM has not been defined, set it to the below default
+ifndef CUSTOM
+CUSTOM := ./custom
+endif
+
+# Name of the header source file
+HEADERFILE = $(COMMON)/header.src
+
+# Names of the files with m4 macros
+M4FILES = $(COMMON)/macro.m4 $(CUSTOM)/*.m4
+
+# Options to m4 command, including search path
+M4FLAGS = --fatal-warnings -I $(COMMON) -I $(CUSTOM)
+
+# Headers to process
+all: header.c header.htm header.ps header.m4 header.ksh header.eps \
+	header.sp header.fth header.cpp
+
+# The HEADERFILE is run through the macro processor, using the M4FILES, to
+# generate the comment header block. Note the $< macro is used to grab the 
+# first dependency, and $@@ grabs the target
+#
+# The start comment, end comment (optional), comment block filler, and
+# comment line length may be defined at the command line 
+
+# A C language header
+header.c : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS) 	-DCOMMENT_START_MACRO="/*" \
+			-DCOMMENT_END_MACRO="*/" \
+			-DCOMMENT_BLOCK_FILLER_MACRO="*" \
+			-DCOMMENT_LINE_LENGTH_MACRO="80" \
+	$< $(HEADERFILE) > $@@
+
+# An HTML header
+header.htm : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS) 	-DCOMMENT_START_MACRO="<!--" \
+			-DCOMMENT_END_MACRO="-->" \
+			-DCOMMENT_BLOCK_FILLER_MACRO="-" \
+			-DCOMMENT_LINE_LENGTH_MACRO="90" \
+	$< $(HEADERFILE) > $@@
+
+# A PostScript header an example of how to add a single line to the 
+# beginning of a header. In this case we insert the PostScript magic number. 
+header.ps : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS)	-DCOMMENT_START_MACRO="%" \
+			-DCOMMENT_LINE_LENGTH_MACRO="72" \
+	$< $(HEADERFILE) | sed -e "1i\\" -e "%!PS-Adobe-3.0" > $@@
+
+# An m4 header showing how to add lines to turn off the built in m4 comments.
+# Serves as an example of how to add multiple lines to the beginning of a header.
+header.m4 : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS)	-DCOMMENT_START_MACRO="\`C '" \
+			-DCOMMENT_BLOCK_FILLER_MACRO="\`C'" \
+			-DCOMMENT_LINE_LENGTH_MACRO="80" \
+	$< $(HEADERFILE) | sed \
+	-e "1i\\" -e "pushdef(\`C',\`dnl')dnl	The letter C indicates a comment" \
+	-e "1i\\" -e "changecom(,)dnl		Disable the built in commenting mechanism" \
+	-e "\$$a\\" -e "popdef(\`C')dnl		Restore any previous definition" > $@@
+ 
+# A Korn shell header showing how to add lines using a separate sed script file.
+# The line that is added tells the shell to run a separate shell invocation and 
+# defines the shell script interpreter that will process the script.
+header.ksh : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS)	-DCOMMENT_START_MACRO="#" \
+			-DCOMMENT_LINE_LENGTH_MACRO="75" \
+	$< $(HEADERFILE) | sed -f $(COMMON)/ksh.sed > $@@
+
+# An Encapsulated PostScript (EPS) header as an example of how to add lines to both
+# the beginning and end of a header. In this case we insert the general EPS document
+# structuring conventions, and append an end of file marker.
+header.eps : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS)	-DCOMMENT_START_MACRO="%" \
+			-DCOMMENT_LINE_LENGTH_MACRO="72" \
+	$< $(HEADERFILE) | sed -f $(COMMON)/eps.sed > $@@
+
+# A SPICE header
+header.sp : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS)	-DCOMMENT_START_MACRO="*" \
+	$< $(HEADERFILE) | sed -e \
+"1i\\" -e "THE FIRST LINE OF A SPICE INPUT FILE IS CONSIDERED A COMMENT" > $@@
+
+# A Forth language header
+header.fth : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS) 	-DCOMMENT_START_MACRO="\\" \
+	$< $(HEADERFILE) > $@@
+
+# No command line arguments defaults to C++ comments and 80 characters per line
+header.cpp : $(M4FILES) $(HEADERFILE) 
+	m4 $(M4FLAGS) $< $(HEADERFILE) > $@@
+
+# *** Phony Rules ****
+
+# ### Rule to clean up the directory ###
+# The "-" at the beginning of the command tells GNU make ignore errors like
+# file not present etc.
+.PHONY: clean
+clean :
+	-rm header.*
+@

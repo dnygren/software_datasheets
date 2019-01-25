@@ -1,0 +1,51 @@
+COMMENT_BLOCK_START_MACRO
+_ Module Name REVISION_MACRO : Follow here with one phrase describing the module.
+_ Release RELEASE_MACRO (Only defined if part of a specified release)
+_
+_ by AUTHOR_NAME_MACRO DATE_MACRO
+_ E-mail: CURRENT_EMAIL_ADDRESS_MACRO 
+_ Permanent E-mail: PERMANENT_EMAIL_ADDRESS_MACRO
+_
+_ COPYRIGHT_NOTICE_MACRO
+_
+_	Start here a paragraph explaining what the module does and how 
+_ it works. Include a description of module limitations and algorithms.
+_
+_ CALLING SEQUENCE	(Example with explanation of call parameters)
+_
+_ EXAMPLE		(Example of a call)
+_
+_ TARGET SYSTEM		(System code targeted for)
+_
+_ DEVELOPMENT SYSTEM	(System code developed on)
+_
+_ CALLS			(List of modules this routine calls)
+_
+_ CALLED BY		(List of modules that call this one)
+_
+_ INPUTS		(Parameters used but not modified, include global and static data)
+_
+_ OUTPUTS		(Parameters modified, include global and static data)
+_
+_ RETURNS		(Type and meaning of return value, if any)
+_
+_ ERROR HANDLING	(Describe how errors are handled)
+_
+_ WARNINGS		(Describe anything a maintainer should be aware of)
+_
+COMMENT_BLOCK_END_MACRO
+COMMENT_BLOCK_START_MACRO
+_               REVISIONS
+_
+_ LOG_MACRO
+COMMENT_BLOCK_END_MACRO
+COMMENT_BLOCK_START_LENGTH_MACRO
+COMMENT_BLOCK_END_LENGTH_MACRO
+COMMENT_START_MACRO X
+COMMENT_END_MACRO X
+len(COMMENT_END_MACRO)
+len(COMMENT_START_MACRO)
+len(COMMENT_BLOCK_FILLER_MACRO)
+COMMENT_LINE_LENGTH_MACRO
+eval((COMMENT_LINE_LENGTH_MACRO - len(COMMENT_START_MACRO)) / len(COMMENT_BLOCK_FILLER_MACRO))
+eval((COMMENT_LINE_LENGTH_MACRO - len(COMMENT_END_MACRO)) / len(COMMENT_BLOCK_FILLER_MACRO))
