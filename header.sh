@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/bin/bash
 ################################################################################
 # Module Name: Follow here with one phrase describing module.
 #
