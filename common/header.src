@@ -35,3 +35,15 @@ _ WARNINGS          (1. Describe anything a maintainer should be aware of)
 _                   (2. Describe anything a maintainer should be aware of)
 _                   (N. Describe anything a maintainer should be aware of)
 COMMENT_BLOCK_END_MACRO
+
+COMMENT_OPEN_BLOCK_START_MACRO
+_ (Delete this explanation from your code.)
+_ The below lines are optionally used to aid maintainers by indicating at
+_ which point portions of the code intended or likely to be modified end.
+COMMENT_OPEN_BLOCK_END_MACRO
+
+COMMENT_OPEN_BLOCK_START_MACRO
+_ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ ^^^^^^^^^^ Place code that may need modification above this point. ^^^^^^^^^^
+_ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+COMMENT_OPEN_BLOCK_END_MACRO

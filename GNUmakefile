@@ -2,8 +2,8 @@
 # GNUMakefile: A Makefile to generate comment header blocks
 #
 # by Daniel C. Nygren
-# E-mail: nygren@msss.com
-# Permanent E-mail: Dan.Nygren@alumni.clemson.edu
+# E-mail: dan.nygren@gmail.com
+# Permanent E-mail: dan.nygren@alumni.clemson.edu
 #
 # Copyright 2001 by Daniel C. Nygren
 #
@@ -20,6 +20,7 @@
 #
 # EXAMPLES          make            (Makes all targets)
 #                   make all        (Makes all targets)
+#                   make debug      (Uses debug.src in place of header.src)
 #                   make header.ext (Just process target listed)
 #                   make clean      (Deletes all targets)
 #
@@ -31,7 +32,7 @@
 #
 # CALLED BY         make
 #
-# INPUTS            header.src, common.m4, and custom m4 files.
+# INPUTS            header.src (or debug.src), common.m4, and custom m4 files.
 #                   Optional $COMMON and $CUSTOM environment variables
 #                   are used to find common and custom m4 files.
 #
@@ -62,6 +63,7 @@ endif
 
 # Name of the header source file
 HEADERFILE = $(COMMON)/header.src
+debug: HEADERFILE = $(COMMON)/debug.src
 
 # Location of GNU sed
 SED = /bin/sed
@@ -76,8 +78,9 @@ M4FILES = $(COMMON)/macro.m4 $(CUSTOM)/*.m4
 M4FLAGS = --fatal-warnings -I $(COMMON) -I $(CUSTOM)
 
 # Headers to process
-all : header.c header.htm header.ps header.m4 header.sh header.pl header.py \
-header.eps header.sp header.fth header.cpp header.lsp header.vhdl header.cad
+all debug : header.c header.htm header.ps header.m4 header.sh header.pl \
+header.py header.eps header.sp header.fth header.cpp header.lsp header.vhdl \
+header.cad
 
 # The HEADERFILE is run through the macro processor, using the M4FILES, to
 # generate the comment header block. Note the $< macro is used to grab the
@@ -109,6 +112,7 @@ header.ps : $(M4FILES) $(HEADERFILE)
 # Serves as an example of how to add multiple lines to a header beginning.
 header.m4 : $(M4FILES) $(HEADERFILE)
 	$(M4) $(M4FLAGS) -DCOMMENT_START_MACRO="\`C'" \
+			-DCOMMENT_END_MACRO="\`C'" \
 			-DCOMMENT_BLOCK_FILLER_MACRO="\`C'" \
 			-DCOMMENT_LINE_LENGTH_MACRO="80" \
 	$< $(HEADERFILE) | $(SED) \

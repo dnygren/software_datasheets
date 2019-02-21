@@ -4,7 +4,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C Module Name: Follow here with one phrase describing module.
 C
 C Created by: Daniel C. Nygren
-C Email: nygren@msss.com
+C Email: dan.nygren@gmail.com
 C Permanent Email: Dan.Nygren@alumni.clemson.edu
 C
 C Copyright 2019 by Daniel C. Nygren
@@ -45,6 +45,13 @@ C
 C WARNINGS          (1. Describe anything a maintainer should be aware of)
 C                   (2. Describe anything a maintainer should be aware of)
 C                   (N. Describe anything a maintainer should be aware of)
-CFOR_MACRO(i,1,80,
-COMMENT_BLOCK_FILLER_MACRO)
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+C (Delete this explanation from your code.)
+C The below lines are optionally used to aid maintainers by indicating at
+C which point portions of the code intended or likely to be modified end.
+
+C ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C ^^^^^^^^^^ Place code that may need modification above this point. ^^^^^^^^^^
+C ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 popdef(`C')dnl Restore any previous definition

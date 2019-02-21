@@ -1,11 +1,11 @@
 pushdef(`C',`dnl')dnl   The letter C indicates a comment in this m4 macro file
 changecom(,)dnl         Disable the built in commenting mechanism
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-C macro.m4 $Revision$: m4 macros for header files
+C macro.m4 : m4 macros for header files
 C
-C by Dan Nygren $Date$
-C E-mail: Dan.Nygren@sun.com
-C Permanent E-mail: Dan.Nygren@alumni.clemson.edu
+C by Dan Nygren
+C E-mail: dan.nygren@gmail.com
+C Permanent E-mail: dan.nygren@alumni.clemson.edu
 C
 C Copyright 2001 by Daniel C. Nygren
 C
@@ -60,7 +60,6 @@ C                   -DCOMMENT_BLOCK_FILLER_MACRO="*" \
 C                   -DCOMMENT_LINE_LENGTH_MACRO="80" \
 C                   header.src > header.c
 C
-C
 C TARGET SYSTEM     Any
 C
 C DEVELOPED USING   Windows95, Cygwin, GNU m4 version 1.4
@@ -81,11 +80,6 @@ C
 C WARNINGS          Don't put blank uncommented lines in this file, as they
 C                   will be copied to the output.
 C
-C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-C               REVISIONS
-C
-C $Log$
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C
 C **** Default Values ****
@@ -112,7 +106,9 @@ include(`company.m4')dnl
 C
 C **** Non-Programming Language Specific Macros ****
 C ---- Comment Block Filler Macro ----
+pushdef(`C')dnl
 define(`_',`COMMENT_BLOCK_FILLER_MACRO')dnl
+popdef(`C')dnl
 C ---- Revision Control System Macros ----
 include(`rcs.m4')dnl
 C
@@ -143,12 +139,7 @@ C identical, the comment end block will start with the comment end macro. If
 C they are different, the comment end block will end with the comment end macro.
 C This way programming languages with both single and paired comment delimiters
 C can be accommodated.
-C
-C Below, the letter C is undefined as a comment if this file defined it, so you
-C can use it later on in your source code. It can be also be used, if necessary,
-C in the ifelse statement below.
-C
-popdef(`C')dnl Undefine C as a comment, restoring any original definition.
+pushdef(`C')dnl
 ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
 `define(`COMMENT_BLOCK_END_MACRO',
 `COMMENT_END_MACRO()FOR_MACRO(`i',1,COMMENT_BLOCK_END_LENGTH_MACRO,
@@ -156,3 +147,23 @@ ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
 `define(`COMMENT_BLOCK_END_MACRO',
 `FOR_MACRO(`i',1,COMMENT_BLOCK_END_LENGTH_MACRO,
 `COMMENT_BLOCK_FILLER_MACRO')COMMENT_END_MACRO()')')dnl
+popdef(`C')dnl
+C
+C An "open block comment" is a block comment without top and bottom borders.
+C
+C The ifelse statement's first two arguments are unquoted, so m4 will replace
+C them with their actual definitions. If the start and end comments are
+C identical, an open block comment will not need a start or an end as the
+C comment C block filler macro will serve to comment out the block.
+C
+C Below, the letter C is undefined as a comment if this file defined it, so you
+C can use it later on in your source code. It can be also be used, if necessary,
+C in the ifelse statement below.
+C
+popdef(`C')dnl Undefine C as a comment, restoring any original definition.
+ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
+`define(`COMMENT_OPEN_BLOCK_START_MACRO',`dnl')',
+`define(`COMMENT_OPEN_BLOCK_START_MACRO',COMMENT_START_MACRO)')dnl
+ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
+`define(`COMMENT_OPEN_BLOCK_END_MACRO',`dnl')',
+`define(`COMMENT_OPEN_BLOCK_END_MACRO',COMMENT_END_MACRO)')dnl
