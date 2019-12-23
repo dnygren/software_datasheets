@@ -5,7 +5,6 @@ C macro.m4 : m4 macros for header files
 C
 C by Dan Nygren
 C E-mail: dan.nygren@gmail.com
-C Permanent E-mail: dan.nygren@alumni.clemson.edu
 C
 C Copyright 2001 by Daniel C. Nygren
 C

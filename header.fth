@@ -2,47 +2,50 @@
 \ Module Name: Follow here with one phrase describing module.
 \
 \ Created by: Daniel C. Nygren
-\ Email: dan.nygren@gmail.com
-\ Permanent Email: Dan.Nygren@alumni.clemson.edu
+\ Email: nygren@msss.com
+\ Permanent Email: dan.nygren@gmail.com
 \
-\ Copyright 2019 by Daniel C. Nygren
+\ Copyright (C) 2001, 2019, Daniel C. Nygren.
 \
-\   Permission to use and modify this software for any purpose other than
-\ its incorporation into a commercial product is hereby granted without fee.
-\ Permission to copy and distribute this software only for non-commercial use
-\ is also granted without fee, provided that the above copyright notice and
-\ this entire permission notice appear in all copies and any supporting
-\ documentation. The author makes no representations about the suitability of
-\ this software for any purpose. It is provided "as is" without express or
-\ implied warranty.
+\ BSD 0-clause license, "Zero Clause BSD", SPDX: 0BSD
+\
+\ Permission to use, copy, modify, and/or distribute this software for any
+\ purpose with or without fee is hereby granted.
+\
+\ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+\ REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+\ AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+\ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+\ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+\ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+\ PERFORMANCE OF THIS SOFTWARE.
 \
 \   Start here a paragraph explaining what the module does and how it works.
 \ Include a description of module limitations and algorithms.
 \
-\ CALLING SEQUENCE  (Example with explanation of call parameters)
+\ CALL SEQUENCE (Example with explanation of call parameters)
 \
-\ EXAMPLES          (Examples of calls)
+\ EXAMPLES      (Examples of calls)
 \
-\ TARGET SYSTEM     (System code targeted for)
+\ TARGET SYSTEM (System code targeted for)
 \
-\ DEVELOPED USING   (System code developed on)
+\ DEVELOPED ON  (System code developed on)
 \
-\ CALLS             (List of modules this routine calls)
+\ CALLS         (List of modules this routine calls)
 \
-\ CALLED BY         (List of modules that call this one)
+\ CALLED BY     (List of modules that call this one)
 \
-\ INPUTS            (Parameters used but not modified, include global and
-\                   static data)
+\ INPUTS        (Parameters used but not modified, include global/static data)
 \
-\ OUTPUTS           (Parameters modified, include global and static data)
+\ OUTPUTS       (Parameters modified, include global/static data)
 \
-\ RETURNS           (Type and meaning of return value, if any)
+\ RETURNS       (Type and meaning of return value, if any)
 \
-\ ERROR HANDLING    (Describe how errors are handled)
+\ ERRORS        (Describe how errors are handled)
 \
-\ WARNINGS          (1. Describe anything a maintainer should be aware of)
-\                   (2. Describe anything a maintainer should be aware of)
-\                   (N. Describe anything a maintainer should be aware of)
+\ WARNINGS      (1. Describe anything a maintainer should be aware of)
+\               (2. Describe anything a maintainer should be aware of)
+\               (N. Describe anything a maintainer should be aware of)
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 \ (Delete this explanation from your code.)

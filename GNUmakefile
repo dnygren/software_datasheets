@@ -3,9 +3,8 @@
 #
 # by Daniel C. Nygren
 # E-mail: dan.nygren@gmail.com
-# Permanent E-mail: dan.nygren@alumni.clemson.edu
 #
-# Copyright 2001 by Daniel C. Nygren
+# Copyright 2020 by Daniel C. Nygren
 #
 #    This is the Makefile for use with a programming language independent
 # comment header block and additional common and custom m4 files. The Makefile
@@ -16,39 +15,38 @@
 # beginning of a file or a certain end of file marker, sed is used to insert
 # these extra lines.
 #
-# CALLING SEQUENCE  make [options] [target]
+# CALL SEQUENCE make [options] [target]
 #
-# EXAMPLES          make            (Makes all targets)
-#                   make all        (Makes all targets)
-#                   make debug      (Uses debug.src in place of header.src)
-#                   make header.ext (Just process target listed)
-#                   make clean      (Deletes all targets)
+# EXAMPLES      make            (Makes all targets)
+#               make all        (Makes all targets)
+#               make debug      (Uses debug.src in place of header.src)
+#               make header.ext (Just process target listed)
+#               make clean      (Deletes all targets)
 #
-# TARGET SYSTEM     Any
+# TARGET SYSTEM Any
 #
-# DEVELOPED USING   Solaris 9, GNU make v3.80, GNU sed v3.02, GNU m4 v1.4
+# DEVELOPED ON  Solaris 9, GNU make v3.80, GNU sed v3.02, GNU m4 v1.4
 #
-# CALLS             m4, sed
+# CALLS         m4, sed
 #
-# CALLED BY         make
+# CALLED BY     make
 #
-# INPUTS            header.src (or debug.src), common.m4, and custom m4 files.
-#                   Optional $COMMON and $CUSTOM environment variables
-#                   are used to find common and custom m4 files.
+# INPUTS        header.src (or debug.src), common.m4, and custom m4 files.
+#               Optional $COMMON and $CUSTOM environment variables are used to
+#               find common and custom m4 files.
 #
-# OUTPUTS           header.ext, where .ext is the language's extension.
+# OUTPUTS       header.ext, where .ext is the language's extension.
 #
-# RETURNS           GNU sed returns 0 if OK, 1 if error in Script,
-#                   and 2 if error during execution.
+# RETURNS       GNU sed returns 0 if OK, 1 if error in Script,
+#               and 2 if error during execution.
 #
-# ERROR HANDLING    make gives up on the current rule if there is an error
-#                   in the rule. m4 stops execution because --fatal-warnings
-#                   is set.
+# ERRORS        make gives up on the current rule if there is an error in the
+#               rule. m4 stops execution because --fatal-warnings is set.
 #
-# WARNINGS          1) After adding new entry rules, add name to the "all"
-#                   target list.
-#                   2) $COMMON defaults to ./common and $CUSTOM defaults
-#                   to ./custom if not defined in your environment.
+# WARNINGS      1) After adding new entry rules, add name to the "all" target
+#               list.
+#               2) Environment variable $COMMON defaults to ./common and
+#               $CUSTOM defaults ./custom if not defined in your environment.
 ###############################################################################
 
 # If COMMON has not been defined, set it to the below default
@@ -97,7 +95,7 @@ header.cpp : $(M4FILES) $(HEADERFILE)
 header.htm : $(M4FILES) $(HEADERFILE)
 	$(M4) $(M4FLAGS) -DCOMMENT_START_MACRO="<!--" \
 			-DCOMMENT_END_MACRO="-->" \
-			-DCOMMENT_BLOCK_FILLER_MACRO="\`|'" \
+			-DCOMMENT_BLOCK_FILLER_MACRO="\`-'" \
 			-DCOMMENT_LINE_LENGTH_MACRO="80" \
 	$< $(HEADERFILE) > $@
 

@@ -3,49 +3,47 @@ changecom(,)dnl         Disable the built in commenting mechanism
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C forloop.m4: A for loop for use with m4
 C
-C by Dan Nygren $Date: 2001/07/20 03:10:25 $
-C E-mail: Dan.Nygren@sun.com
-C Permanent E-mail: Dan.Nygren@alumni.clemson.edu
+C by Dan Nygren
+C E-mail: Dan.Nygren@gmail.com
 C
-C Copyright 2001 by Daniel C. Nygren
+C Copyright 2020 by Daniel C. Nygren
 C
 C   m4 does not directly support for loops. The for loop below relies upon
 C recursion to accomplish its task. To exit the for loop before it has completed
 C its normal course, define the BREAK_MACRO.
 C
-C CALLING SEQUENCE  FOR_MACRO(`loop variable',start,end,`procedure')
-C                   BREAK_MACRO breaks out of loop
+C CALL SEQUENCE FOR_MACRO(`loop variable',start,end,`procedure')
+C               BREAK_MACRO breaks out of loop
 C
-C EXAMPLES          FOR_MACRO(`i',1,80,`*')dnl
-C                   The above prints out eighty asterisks
-C                   FOR_MACRO(`i',1,80,` i')dnl
-C                   The above prints the loop count (digits 1 to 80)
-C                   FOR_MACRO(`i',1,80,`ifelse(i,eval(2**5),
-C                   `BREAK_MACRO',` i')')dnl
-C                   Break out of the for loop if the loop count equals 32,
-C                   else print the loop count
+C EXAMPLES      FOR_MACRO(`i',1,80,`*')dnl
+C               The above prints out eighty asterisks
+C               FOR_MACRO(`i',1,80,` i')dnl
+C               The above prints the loop count (digits 1 to 80)
+C               FOR_MACRO(`i',1,80,`ifelse(i,eval(2**5),
+C               `BREAK_MACRO',` i')')dnl
+C               Break out of the for loop if the loop count equals 32,
+C               else print the loop count
 C
-C TARGET SYSTEM     Any
+C TARGET SYSTEM Any
 C
-C DEVELOPED USING   Windows95, Cygwin, GNU m4 version 1.4
+C DEVELOPED ON  Windows95, Cygwin, GNU m4 version 1.4
 C
-C CALLS             None
+C CALLS         None
 C
-C CALLED BY         m4
+C CALLED BY     m4
 C
-C INPUTS            A variable name, start count, end count, and a procedure
-C                   to execute
+C INPUTS        A variable name, start count, end count, and a procedure
+C               to execute
 C
-C OUTPUTS           Output of `procedure'
+C OUTPUTS       Output of `procedure'
 C
-C RETURNS           Nothing
+C RETURNS       Nothing
 C
-C ERROR HANDLING    Checks to make sure start count <= end count and exits
-C                   if it does not.
+C ERRORS        Checks to make sure start count <= end count and exits
+C               if it does not.
 C
-C WARNINGS          Do not put blank uncommented lines in this file, as they
-C                   will be copied to the output.
-C
+C WARNINGS      Do not put blank uncommented lines in this file, as they
+C               will be copied to the output.
 C
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C

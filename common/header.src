@@ -10,30 +10,29 @@ _
 _   Start here a paragraph explaining what the module does and how it works.
 _ Include a description of module limitations and algorithms.
 _
-_ CALLING SEQUENCE  (Example with explanation of call parameters)
+_ CALL SEQUENCE (Example with explanation of call parameters)
 _
-_ EXAMPLES          (Examples of calls)
+_ EXAMPLES      (Examples of calls)
 _
-_ TARGET SYSTEM     (System code targeted for)
+_ TARGET SYSTEM (System code targeted for)
 _
-_ DEVELOPED USING   (System code developed on)
+_ DEVELOPED ON  (System code developed on)
 _
-_ CALLS             (List of modules this routine calls)
+_ CALLS         (List of modules this routine calls)
 _
-_ CALLED BY         (List of modules that call this one)
+_ CALLED BY     (List of modules that call this one)
 _
-_ INPUTS            (Parameters used but not modified, include global and
-_                   static data)
+_ INPUTS        (Parameters used but not modified, include global/static data)
 _
-_ OUTPUTS           (Parameters modified, include global and static data)
+_ OUTPUTS       (Parameters modified, include global/static data)
 _
-_ RETURNS           (Type and meaning of return value, if any)
+_ RETURNS       (Type and meaning of return value, if any)
 _
-_ ERROR HANDLING    (Describe how errors are handled)
+_ ERRORS        (Describe how errors are handled)
 _
-_ WARNINGS          (1. Describe anything a maintainer should be aware of)
-_                   (2. Describe anything a maintainer should be aware of)
-_                   (N. Describe anything a maintainer should be aware of)
+_ WARNINGS      (1. Describe anything a maintainer should be aware of)
+_               (2. Describe anything a maintainer should be aware of)
+_               (N. Describe anything a maintainer should be aware of)
 COMMENT_BLOCK_END_MACRO
 
 COMMENT_OPEN_BLOCK_START_MACRO
