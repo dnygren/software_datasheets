@@ -1,4 +1,4 @@
-###############################################################################
+###########################################################
 # GNUMakefile: A Makefile to generate comment header blocks
 #
 # by Daniel C. Nygren
@@ -25,7 +25,7 @@
 #
 # TARGET SYSTEM Any
 #
-# DEVELOPED ON  Solaris 9, GNU make v3.80, GNU sed v3.02, GNU m4 v1.4
+# DEVELOPED ON  Solaris, GNU make v3.80, GNU sed v3.02, GNU m4 v1.4
 #
 # CALLS         m4, sed
 #
@@ -43,11 +43,20 @@
 # ERRORS        make gives up on the current rule if there is an error in the
 #               rule. m4 stops execution because --fatal-warnings is set.
 #
-# WARNINGS      1) After adding new entry rules, add name to the "all" target
-#               list.
+# WARNINGS      1) If adding new entry rules, add name to the "all" target list.
 #               2) Environment variable $COMMON defaults to ./common and
 #               $CUSTOM defaults ./custom if not defined in your environment.
-###############################################################################
+###########################################################
+
+# Location of GNU sed
+SED = /bin/sed
+
+# Location of GNU m4
+M4 = /usr/bin/m4
+
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# ^^^^^^^^^^ Place code that may need modification above this point. ^^^^^^^^^^
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # If COMMON has not been defined, set it to the below default
 ifndef COMMON
@@ -63,17 +72,11 @@ endif
 HEADERFILE = $(COMMON)/header.src
 debug: HEADERFILE = $(COMMON)/debug.src
 
-# Location of GNU sed
-SED = /bin/sed
-
-# Location of GNU m4
-M4 = /usr/bin/m4
-
 # Names of the files with m4 macros
 M4FILES = $(COMMON)/macro.m4 $(CUSTOM)/*.m4
 
 # Options to m4 command, including search path
-M4FLAGS = --fatal-warnings -I $(COMMON) -I $(CUSTOM)
+M4FLAGS = --prefix-builtins --fatal-warnings -I $(COMMON) -I $(CUSTOM)
 
 # Headers to process
 all debug : header.c header.htm header.ps header.m4 header.sh header.pl \

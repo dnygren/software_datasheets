@@ -1,5 +1,5 @@
-pushdef(`C',`dnl')dnl   The letter C indicates a comment in this m4 macro file
-changecom(,)dnl         Disable the built in commenting mechanism
+m4_pushdef(`C',`m4_dnl')m4_dnl  "C" indicates a comment in this m4 macro file
+m4_changecom(,)m4_dnl           Disable the built in commenting mechanism
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C macro.m4 : m4 macros for header files
 C
@@ -49,35 +49,37 @@ C a ` and a ' (e.g. `NAME_MACRO') in the definitions so they won't be expanded
 C before they have been defined themselves.
 C
 C
-C CALLING SEQUENCE  m4 [options] this_file input_file > output_file
+C CALL SEQUENCE m4 --prefix-builtins this_file input_file > output_file
 C
-C EXAMPLES          m4 macro.m4 header.src > header.cpp
+C EXAMPLES      m4 macro.m4 header.src > header.cpp
 C
-C                   m4 -DCOMMENT_START_MACRO="/*" \
-C                   -DCOMMENT_END_MACRO="*/" \
-C                   -DCOMMENT_BLOCK_FILLER_MACRO="*" \
-C                   -DCOMMENT_LINE_LENGTH_MACRO="80" \
-C                   header.src > header.c
+C               m4 -DCOMMENT_START_MACRO="/*" \
+C               -DCOMMENT_END_MACRO="*/" \
+C               -DCOMMENT_BLOCK_FILLER_MACRO="*" \
+C               -DCOMMENT_LINE_LENGTH_MACRO="80" \
+C               header.src > header.c
 C
-C TARGET SYSTEM     Any
+C TARGET SYSTEM Any
 C
-C DEVELOPED USING   Windows95, Cygwin, GNU m4 version 1.4
+C DEVELOPED ON  Windows95, Cygwin, GNU m4 version 1.4
 C
-C CALLS             forloop.m4, rcs.m4, personal.m4, company.m4
+C CALLS         forloop.m4, rcs.m4, personal.m4, company.m4
 C
-C CALLED BY         m4
+C CALLED BY     m4
 C
-C INPUTS            A file containing m4 header macros
+C INPUTS        A file containing m4 header macros
 C
-C OUTPUTS           A file with m4 header macros replaced with the
-C                   definitions in this file.
+C OUTPUTS       A file with m4 header macros replaced with the
+C               definitions in this file.
 C
-C RETURNS           None
+C RETURNS       None
 C
-C ERROR HANDLING    Accomplished by m4 options
+C ERRORS        Accomplished by m4 options
 C
-C WARNINGS          Don't put blank uncommented lines in this file, as they
-C                   will be copied to the output.
+C WARNINGS      1) Don't put blank uncommented lines in this file, as they
+C               will be copied to the output.
+C               2) All m4 builtins are prefixed with "m4_" so the -P or
+C               --prefix-builtins option is required.
 C
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C
@@ -91,46 +93,48 @@ C temporarily undefine the capital letter C not to be a comment and restore it
 C after these m4 definitions in case it is used as a comment in the source file.
 C If we didn't do this, we wouldn't be able to assign other macros its value.
 C
-pushdef(`C')dnl
-ifdef(COMMENT_START_MACRO,,define(COMMENT_START_MACRO,`//'))dnl
-ifdef(COMMENT_END_MACRO,,define(COMMENT_END_MACRO,COMMENT_START_MACRO))dnl
-ifdef(COMMENT_BLOCK_FILLER_MACRO,,define(COMMENT_BLOCK_FILLER_MACRO,
-COMMENT_START_MACRO))dnl
-ifdef(COMMENT_LINE_LENGTH_MACRO,,define(COMMENT_LINE_LENGTH_MACRO,`80'))dnl
-popdef(`C')dnl
+m4_pushdef(`C')m4_dnl
+m4_ifdef(COMMENT_START_MACRO,,m4_define(COMMENT_START_MACRO,`//'))m4_dnl
+m4_ifdef(COMMENT_END_MACRO,,m4_define(COMMENT_END_MACRO,
+COMMENT_START_MACRO))m4_dnl
+m4_ifdef(COMMENT_BLOCK_FILLER_MACRO,,m4_define(COMMENT_BLOCK_FILLER_MACRO,
+COMMENT_START_MACRO))m4_dnl
+m4_ifdef(COMMENT_LINE_LENGTH_MACRO,,m4_define(COMMENT_LINE_LENGTH_MACRO,
+`80'))m4_dnl
+m4_popdef(`C')m4_dnl
 C
 C **** Programmer Specific Macros ****
-include(`personal.m4')dnl
-include(`company.m4')dnl
+m4_include(`personal.m4')m4_dnl
+m4_include(`company.m4')m4_dnl
 C
 C **** Non-Programming Language Specific Macros ****
 C ---- Comment Block Filler Macro ----
-pushdef(`C')dnl
-define(`_',`COMMENT_BLOCK_FILLER_MACRO')dnl
-popdef(`C')dnl
+m4_pushdef(`C')m4_dnl
+m4_define(`_',`COMMENT_BLOCK_FILLER_MACRO')m4_dnl
+m4_popdef(`C')m4_dnl
 C ---- Revision Control System Macros ----
-include(`rcs.m4')dnl
+m4_include(`rcs.m4')m4_dnl
 C
 C **** Common Macros ****
 C ---- m4 "for" loop ----
-include(`forloop.m4')dnl
+m4_include(`forloop.m4')m4_dnl
 C
 C ---- Comment Block Macros ----
 C I temporarily undefine the capital letter C not to be a comment and restore it
 C after these m4 definitions in case it is used as a comment in the source file.
 C If we didn't do this, we wouldn't be able to assign other macros its value.
 C
-pushdef(`C')dnl
-define(`COMMENT_BLOCK_START_LENGTH_MACRO',
-eval((COMMENT_LINE_LENGTH_MACRO - len(COMMENT_START_MACRO))
-/ len(COMMENT_BLOCK_FILLER_MACRO)))dnl
-define(`COMMENT_BLOCK_END_LENGTH_MACRO',
-eval((COMMENT_LINE_LENGTH_MACRO - len(COMMENT_END_MACRO))
-/ len(COMMENT_BLOCK_FILLER_MACRO)))dnl
-define(`COMMENT_BLOCK_START_MACRO',
+m4_pushdef(`C')m4_dnl
+m4_define(`COMMENT_BLOCK_START_LENGTH_MACRO',
+m4_eval((COMMENT_LINE_LENGTH_MACRO - m4_len(COMMENT_START_MACRO))
+/ m4_len(COMMENT_BLOCK_FILLER_MACRO)))m4_dnl
+m4_define(`COMMENT_BLOCK_END_LENGTH_MACRO',
+m4_eval((COMMENT_LINE_LENGTH_MACRO - m4_len(COMMENT_END_MACRO))
+/ m4_len(COMMENT_BLOCK_FILLER_MACRO)))m4_dnl
+m4_define(`COMMENT_BLOCK_START_MACRO',
 `COMMENT_START_MACRO()FOR_MACRO(`i',1,COMMENT_BLOCK_START_LENGTH_MACRO,
-`COMMENT_BLOCK_FILLER_MACRO')')dnl
-popdef(`C')dnl
+`COMMENT_BLOCK_FILLER_MACRO')')m4_dnl
+m4_popdef(`C')m4_dnl
 C
 C The ifelse statement's first two arguments are unquoted, so m4 will replace
 C them with their actual definitions. If the start and end comments are
@@ -138,15 +142,15 @@ C identical, the comment end block will start with the comment end macro. If
 C they are different, the comment end block will end with the comment end macro.
 C This way programming languages with both single and paired comment delimiters
 C can be accommodated.
-pushdef(`C')dnl
-ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
-`define(`COMMENT_BLOCK_END_MACRO',
+m4_pushdef(`C')m4_dnl
+m4_ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
+`m4_define(`COMMENT_BLOCK_END_MACRO',
 `COMMENT_END_MACRO()FOR_MACRO(`i',1,COMMENT_BLOCK_END_LENGTH_MACRO,
 `COMMENT_BLOCK_FILLER_MACRO')')',
-`define(`COMMENT_BLOCK_END_MACRO',
+`m4_define(`COMMENT_BLOCK_END_MACRO',
 `FOR_MACRO(`i',1,COMMENT_BLOCK_END_LENGTH_MACRO,
-`COMMENT_BLOCK_FILLER_MACRO')COMMENT_END_MACRO()')')dnl
-popdef(`C')dnl
+`COMMENT_BLOCK_FILLER_MACRO')COMMENT_END_MACRO()')')m4_dnl
+m4_popdef(`C')m4_dnl
 C
 C An "open block comment" is a block comment without top and bottom borders.
 C
@@ -159,10 +163,10 @@ C Below, the letter C is undefined as a comment if this file defined it, so you
 C can use it later on in your source code. It can be also be used, if necessary,
 C in the ifelse statement below.
 C
-popdef(`C')dnl Undefine C as a comment, restoring any original definition.
-ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
-`define(`COMMENT_OPEN_BLOCK_START_MACRO',`dnl')',
-`define(`COMMENT_OPEN_BLOCK_START_MACRO',COMMENT_START_MACRO)')dnl
-ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
-`define(`COMMENT_OPEN_BLOCK_END_MACRO',`dnl')',
-`define(`COMMENT_OPEN_BLOCK_END_MACRO',COMMENT_END_MACRO)')dnl
+m4_popdef(`C')m4_dnl Undefine C as a comment, restoring any original definition.
+m4_ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
+`m4_define(`COMMENT_OPEN_BLOCK_START_MACRO',`m4_dnl')',
+`m4_define(`COMMENT_OPEN_BLOCK_START_MACRO',COMMENT_START_MACRO)')m4_dnl
+m4_ifelse(COMMENT_START_MACRO,COMMENT_END_MACRO,
+`m4_define(`COMMENT_OPEN_BLOCK_END_MACRO',`m4_dnl')',
+`m4_define(`COMMENT_OPEN_BLOCK_END_MACRO',COMMENT_END_MACRO)')m4_dnl
