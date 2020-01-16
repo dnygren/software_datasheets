@@ -4,7 +4,7 @@
 # by Daniel C. Nygren
 # E-mail: dan.nygren@gmail.com
 #
-# Copyright 2020 by Daniel C. Nygren
+# Copyright (c) 2020, Daniel C. Nygren.
 #
 #    This is the Makefile for use with a programming language independent
 # comment header block and additional common and custom m4 files. The Makefile

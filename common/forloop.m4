@@ -3,10 +3,11 @@ m4_changecom(,)m4_dnl           Disable the built in commenting mechanism
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C forloop.m4: A for loop for use with m4
 C
-C by Dan Nygren
-C E-mail: Dan.Nygren@gmail.com
+C Created by: Daniel C. Nygren
+C Email: nygren@msss.com
+C Permanent Email: dan.nygren@gmail.com
 C
-C Copyright 2020 by Daniel C. Nygren
+C Copyright (c) 2020, Daniel C. Nygren.
 C
 C   m4 does not directly support for loops. The for loop below relies upon
 C recursion to accomplish its task. To exit the for loop before it has completed
@@ -26,7 +27,7 @@ C               else print the loop count
 C
 C TARGET SYSTEM Any
 C
-C DEVELOPED ON  Windows95, Cygwin, GNU m4 version 1.4
+C DEVELOPED ON  Windows, Cygwin, GNU m4 version 1.4
 C
 C CALLS         None
 C

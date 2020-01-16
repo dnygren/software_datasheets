@@ -3,10 +3,11 @@ m4_changecom(,)m4_dnl           Disable the built in commenting mechanism
 C CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C macro.m4 : m4 macros for header files
 C
-C by Dan Nygren
-C E-mail: dan.nygren@gmail.com
+C Created by: Daniel C. Nygren
+C Email: nygren@msss.com
+C Permanent Email: dan.nygren@gmail.com
 C
-C Copyright 2001 by Daniel C. Nygren
+C Copyright (c) 2001, 2020, Daniel C. Nygren.
 C
 C   This file, combined with a generic header file containing m4 macros, will
 C produce a comment header block for a particular programming language. The
@@ -61,7 +62,7 @@ C               header.src > header.c
 C
 C TARGET SYSTEM Any
 C
-C DEVELOPED ON  Windows95, Cygwin, GNU m4 version 1.4
+C DEVELOPED ON  Windows, Cygwin, GNU m4 version 1.4
 C
 C CALLS         forloop.m4, rcs.m4, personal.m4, company.m4
 C

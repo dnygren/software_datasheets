@@ -7,7 +7,7 @@ C Created by: Daniel C. Nygren
 C Email: nygren@msss.com
 C Permanent Email: dan.nygren@gmail.com
 C
-C Copyright (C) 2001, 2019, Daniel C. Nygren.
+C Copyright (c) 2001, 2020, Daniel C. Nygren.
 C
 C BSD 0-clause license, "Zero Clause BSD", SPDX: 0BSD
 C
