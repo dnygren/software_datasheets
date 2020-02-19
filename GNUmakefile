@@ -1,5 +1,5 @@
 ###########################################################
-# GNUMakefile: A Makefile to generate comment header blocks
+# GNUmakefile: A Makefile to generate comment header blocks
 #
 # by Daniel C. Nygren
 # E-mail: dan.nygren@gmail.com
@@ -80,8 +80,7 @@ M4FLAGS = --prefix-builtins --fatal-warnings -I $(COMMON) -I $(CUSTOM)
 
 # Headers to process
 all debug : header.c header.htm header.ps header.m4 header.sh header.pl \
-header.py header.eps header.sp header.fth header.cpp header.lsp header.vhdl \
-header.cad
+header.py header.eps header.sp header.fth header.cpp header.lsp header.vhdl
 
 # The HEADERFILE is run through the macro processor, using the M4FILES, to
 # generate the comment header block. Note the $< macro is used to grab the
@@ -172,13 +171,6 @@ header.vhdl : $(M4FILES) $(HEADERFILE)
 	$(M4) $(M4FLAGS) -DCOMMENT_START_MACRO="--" \
 	$< $(HEADERFILE) > $@
 
-# An Cadence configuration file header
-header.cad : $(M4FILES) $(HEADERFILE)
-	$(M4) $(M4FLAGS) -DCOMMENT_START_MACRO="{" \
-			-DCOMMENT_END_MACRO="}" \
-			-DCOMMENT_BLOCK_FILLER_MACRO="\`|'" \
-			-DCOMMENT_LINE_LENGTH_MACRO="80" \
-	$< $(HEADERFILE) > $@
 # A C language header
 # The C language header is different than most because the "*" characters of
 # the block filler are aligned with the "*" character of the start or end macro.

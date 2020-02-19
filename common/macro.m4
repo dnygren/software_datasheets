@@ -36,7 +36,7 @@ C much. The "dnl" built in is also used after defines in order to remove the
 C following newline.
 C
 C   m4 macros are, by my convention, in uppercase and end with "_MACRO" so
-C they won't be confused with any other upppercase identifiers. The exceptions
+C they won't be confused with any other uppercase identifiers. The exceptions
 C are the letter C, defined at the top of this file for use in this m4 file only
 C (it is undefined at the end of this file so it won't interfere with your
 C source code), and the bare underscore "_", which is used as a comment block
