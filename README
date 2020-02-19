@@ -1,0 +1,5 @@
+BSD 0-clause license, "Zero Clause BSD", SPDX: 0BSD
+Copyright (c) 2020, Daniel C. Nygren.
+
+Code for creating software datasheets, (i.e. programming language independent
+comment header blocks.)
