@@ -11,7 +11,7 @@ C Copyright (c) 2001, 2020, Daniel C. Nygren.
 C
 C   This file, combined with a generic header file containing m4 macros, will
 C produce a comment header block for a particular programming language. The
-C personal and company macros are contained in separate files and should be
+C personal and organization macros are contained in separate files and should be
 C changed for your application. The programming language comment macros are
 C selected on the command line with the COMMENT_START_MACRO and optionally
 C the COMMENT_END_MACRO. The length of a comment block line is the
@@ -64,7 +64,7 @@ C TARGET SYSTEM Any
 C
 C DEVELOPED ON  Windows, Cygwin, GNU m4 version 1.4
 C
-C CALLS         forloop.m4, rcs.m4, personal.m4, company.m4
+C CALLS         forloop.m4, rcs.m4, personal.m4, organization.m4
 C
 C CALLED BY     m4
 C
@@ -73,7 +73,7 @@ C
 C OUTPUTS       A file with m4 header macros replaced with the
 C               definitions in this file.
 C
-C RETURNS       None
+C RETURNS       Nothing
 C
 C ERRORS        Accomplished by m4 options
 C
@@ -106,7 +106,10 @@ m4_popdef(`C')m4_dnl
 C
 C **** Programmer Specific Macros ****
 m4_include(`personal.m4')m4_dnl
-m4_include(`company.m4')m4_dnl
+m4_include(`organization.m4')m4_dnl
+C ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C ^^^^^^^^^^ Place code that may need modification above this point. ^^^^^^^^^^
+C ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 C
 C **** Non-Programming Language Specific Macros ****
 C ---- Comment Block Filler Macro ----

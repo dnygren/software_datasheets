@@ -14,7 +14,7 @@ C recursion to accomplish its task. To exit the for loop before it has completed
 C its normal course, define the BREAK_MACRO.
 C
 C CALL SEQUENCE FOR_MACRO(`loop variable',start,end,`procedure')m4_dnl
-C               BREAK_MACRO breaks out of loop
+C               The BREAK_MACRO breaks out of the loop.
 C
 C EXAMPLES      FOR_MACRO(`i',1,80,`*')m4_dnl
 C               The above prints out eighty asterisks
@@ -23,7 +23,7 @@ C               The above prints the loop count (digits 1 to 80)
 C               FOR_MACRO(`i',1,80,`m4_ifelse(i,eval(2**5),
 C               `BREAK_MACRO',` i')')m4_dnl
 C               Break out of the for loop if the loop count equals 32,
-C               else print the loop count
+C               else print the loop count.
 C
 C TARGET SYSTEM Any
 C
