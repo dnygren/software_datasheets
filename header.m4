@@ -25,29 +25,31 @@ C
 C   Start here a paragraph explaining what the module does and how it works.
 C Include a description of module limitations and algorithms.
 C
-C CALL SEQUENCE (Example with explanation of call parameters)
+C CALL SEQUENCE  (Example with explanation of call parameters)
 C
-C EXAMPLES      (Examples of calls)
+C EXAMPLES       (Examples of calls)
 C
-C TARGET SYSTEM (System code targeted for)
+C TARGET SYSTEM  (System code targeted for)
 C
-C DEVELOPED ON  (System code developed on)
+C DEVELOPED ON   (System code developed on)
 C
-C CALLS         (List of modules this routine calls)
+C CALLS          (List of modules this routine calls)
 C
-C CALLED BY     (List of modules that call this one)
+C CALLED BY      (List of modules that call this one)
 C
-C INPUTS        (Parameters used but not modified, include global/static data)
+C INPUTS         (Parameters used but not modified, include global/static data)
 C
-C OUTPUTS       (Parameters modified, include global/static data)
+C OUTPUTS        (Parameters modified, include global/static data)
 C
-C RETURNS       (Type and meaning of return value, if any)
+C RETURNS        (Type and meaning of return value, if any)
 C
-C ERRORS        (Describe how errors are handled)
+C ERROR HANDLING (Describe how errors are handled)
 C
-C WARNINGS      (1. Describe anything a maintainer should be aware of)
-C               (2. Describe anything a maintainer should be aware of)
-C               (N. Describe anything a maintainer should be aware of)
+C SECURE CODING  (List methods used to prevent exploits against this code)
+C
+C WARNINGS       (1. Describe anything a maintainer should be aware of)
+C                (2. Describe anything a maintainer should be aware of)
+C                (N. Describe anything a maintainer should be aware of)
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
 C (Delete this explanation from your code.)

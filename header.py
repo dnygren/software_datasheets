@@ -24,29 +24,31 @@
 #   Start here a paragraph explaining what the module does and how it works.
 # Include a description of module limitations and algorithms.
 #
-# CALL SEQUENCE (Example with explanation of call parameters)
+# CALL SEQUENCE  (Example with explanation of call parameters)
 #
-# EXAMPLES      (Examples of calls)
+# EXAMPLES       (Examples of calls)
 #
-# TARGET SYSTEM (System code targeted for)
+# TARGET SYSTEM  (System code targeted for)
 #
-# DEVELOPED ON  (System code developed on)
+# DEVELOPED ON   (System code developed on)
 #
-# CALLS         (List of modules this routine calls)
+# CALLS          (List of modules this routine calls)
 #
-# CALLED BY     (List of modules that call this one)
+# CALLED BY      (List of modules that call this one)
 #
-# INPUTS        (Parameters used but not modified, include global/static data)
+# INPUTS         (Parameters used but not modified, include global/static data)
 #
-# OUTPUTS       (Parameters modified, include global/static data)
+# OUTPUTS        (Parameters modified, include global/static data)
 #
-# RETURNS       (Type and meaning of return value, if any)
+# RETURNS        (Type and meaning of return value, if any)
 #
-# ERRORS        (Describe how errors are handled)
+# ERROR HANDLING (Describe how errors are handled)
 #
-# WARNINGS      (1. Describe anything a maintainer should be aware of)
-#               (2. Describe anything a maintainer should be aware of)
-#               (N. Describe anything a maintainer should be aware of)
+# SECURE CODING  (List methods used to prevent exploits against this code)
+#
+# WARNINGS       (1. Describe anything a maintainer should be aware of)
+#                (2. Describe anything a maintainer should be aware of)
+#                (N. Describe anything a maintainer should be aware of)
 ################################################################################
 
 # (Delete this explanation from your code.)
