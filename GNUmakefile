@@ -4,7 +4,7 @@
 # by Daniel C. Nygren
 # E-mail: dan.nygren@gmail.com
 #
-# Copyright (c) 2020, Daniel C. Nygren.
+# Copyright (c) 2022, Daniel C. Nygren.
 #
 #    This is the Makefile for use with a programming language independent
 # comment header block and additional common and custom m4 files. The Makefile
@@ -80,7 +80,8 @@ M4FLAGS = --prefix-builtins --fatal-warnings -I $(COMMON) -I $(CUSTOM)
 
 # Headers to process
 all debug : header.c header.htm header.ps header.m4 header.sh header.pl \
-header.py header.eps header.sp header.fth header.cpp header.lsp header.vhdl
+header.py header.eps header.sp header.fth header.cpp header.lsp header.vhdl \
+header.vim
 
 # The HEADERFILE is run through the macro processor, using the M4FILES, to
 # generate the comment header block. Note the $< macro is used to grab the
@@ -185,6 +186,12 @@ header.c : $(M4FILES) $(HEADERFILE)
 	$< $(HEADERFILE) | $(SED) \
 	-e "s/^\*/ \*/" \
 	-e "s/^ \*\*/ \*/" > $@
+
+# A Vim / Gvim text editor config file header
+header.vim : $(M4FILES) $(HEADERFILE)
+	$(M4) $(M4FLAGS) -DCOMMENT_START_MACRO="\"" \
+	$< $(HEADERFILE) > $@
+
 
 # *** Phony Rules ****
 
