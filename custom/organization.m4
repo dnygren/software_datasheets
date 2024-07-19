@@ -1,4 +1,4 @@
-m4_define(`COPYRIGHT_NOTICE_MACRO',`Copyright (c) 2001, 2022, Daniel C. Nygren.
+m4_define(`COPYRIGHT_NOTICE_MACRO',`Copyright (c) 2001, 2024, Daniel C. Nygren.
 _
 _ BSD 0-clause license, "Zero Clause BSD", SPDX: 0BSD
 _

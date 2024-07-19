@@ -5,7 +5,7 @@
  * Email: nygren@msss.com
  * Permanent Email: dan.nygren@gmail.com
  *
- * Copyright (c) 2001, 2022, Daniel C. Nygren.
+ * Copyright (c) 2001, 2024, Daniel C. Nygren.
  *
  * BSD 0-clause license, "Zero Clause BSD", SPDX: 0BSD
  *

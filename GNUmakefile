@@ -80,7 +80,7 @@ M4FLAGS = --prefix-builtins --fatal-warnings -I $(COMMON) -I $(CUSTOM)
 
 # Headers to process
 all debug : header.c header.htm header.ps header.m4 header.sh header.pl \
-header.py header.eps header.sp header.fth header.cpp header.lsp header.vhdl \
+header.py header.eps header.sp header.4th header.cpp header.lsp header.vhdl \
 header.vim
 
 # The HEADERFILE is run through the macro processor, using the M4FILES, to
@@ -158,9 +158,10 @@ header.sp : $(M4FILES) $(HEADERFILE)
 # Perhaps we don't need to include the interpreter shebang/hashbang line.
 # Here are more examples without one.
 # A Forth language header
-header.fth : $(M4FILES) $(HEADERFILE)
-	$(M4) $(M4FLAGS) -DCOMMENT_START_MACRO="\\" \
-	$< $(HEADERFILE) > $@
+header.4th : $(M4FILES) $(HEADERFILE)
+	$(M4) $(M4FLAGS) -DCOMMENT_START_MACRO="\ " \
+			-DCOMMENT_BLOCK_FILLER_MACRO="\\" \
+	$< $(HEADERFILE) | $(SED) -e "1i\\" -e "#!/usr/bin/gforth" > $@
 
 # A Lisp language header
 header.lsp : $(M4FILES) $(HEADERFILE)
